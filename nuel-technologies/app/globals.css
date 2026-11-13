@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: dark; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; background: #050505; }
+  body { @apply overflow-x-hidden bg-ink font-sans text-base leading-relaxed text-fg antialiased; }
+  h1, h2, h3 { @apply font-display font-semibold leading-[1.05] tracking-tight; }
+  :focus-visible { @apply rounded-xl outline outline-2 outline-offset-4 outline-lime; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/[.12] bg-white/[.055] backdrop-blur-[18px] backdrop-saturate-150;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 20px 50px -25px #000;
+  }
+  .btn {
+    @apply group inline-flex items-center gap-2 rounded-2xl bg-lime px-6 py-3.5 text-[.95rem] font-semibold text-[#0a0f00] transition duration-300;
+  }
+  .btn:hover { @apply -translate-y-0.5; box-shadow: 0 0 0 4px rgb(198 255 61 / .18), 0 14px 34px -8px rgb(198 255 61 / .6); }
+  .btn-ghost { @apply border border-white/[.12] bg-white/[.055] text-fg backdrop-blur-xl hover:border-lime hover:shadow-none; }
+  .tag { @apply glass mb-5 inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-[.82rem] font-semibold text-lime; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

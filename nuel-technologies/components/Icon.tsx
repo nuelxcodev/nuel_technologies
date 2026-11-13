@@ -1,0 +1,41 @@
+const paths: Record<string, string> = {
+  arrow: "M5 12h14M13 6l6 6-6 6",
+  check: "M5 12.5l4.5 4.5L19 7.5",
+  menu: "M4 8h16M4 16h16",
+  close: "M6 6l12 12M18 6L6 18",
+  plus: "M12 5v14M5 12h14",
+  bolt: "M13 3L5 14h6l-1 7 8-11h-6z",
+  phone: "M9.5 2.5h5a2 2 0 012 2v15a2 2 0 01-2 2h-5a2 2 0 01-2-2v-15a2 2 0 012-2zM11 18.5h2",
+  compass: "M12 3a9 9 0 100 18 9 9 0 000-18zM15.5 8.5l-2 5-5 2 2-5z",
+  shield: "M12 3l7 3v5.5c0 4.4-3 7.8-7 9.5-4-1.7-7-5.1-7-9.5V6zM9 12l2 2 4-4",
+  wrench: "M14.5 6.5a4 4 0 005 5l-8.5 8.5a2.1 2.1 0 01-3-3L16.5 8.5M14.5 6.5l3-3 3 3-3 3",
+  rocket: "M5 19c0-2 1-3 2-3l1 1c0 1-1 2-3 2zM9 15l-1-1c0-5 4-10 11-11 0 7-5 11-10 11zM9 15l-2.5-.5M9 15l.5 2.5M15 8a1 1 0 100 2 1 1 0 000-2z",
+  trend: "M3 17l6-6 4 4 8-8M15 7h6v6",
+  mail: "M6 5h12a3 3 0 013 3v8a3 3 0 01-3 3H6a3 3 0 01-3-3V8a3 3 0 013-3zM4 7l8 6 8-6",
+  call: "M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z",
+  users: "M9 4.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zM2.5 20c.5-3.5 3-5.5 6.5-5.5s6 2 6.5 5.5M16 4.5a3.5 3.5 0 010 7M18 14.8c2 .6 3.2 2.4 3.5 5.2",
+  layers: "M12 3l9 5-9 5-9-5zM3 13l9 5 9-5",
+  spark: "M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z",
+  share: "M6 9.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM18 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM18 15.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6",
+  video: "M6 6h7a3 3 0 013 3v6a3 3 0 01-3 3H6a3 3 0 01-3-3V9a3 3 0 013-3zM16 10.5l5-3v9l-5-3z",
+  stream: "M12 3a9 9 0 100 18 9 9 0 000-18zM10 8.5l5.5 3.5-5.5 3.5z",
+};
+
+export type IconName = keyof typeof paths;
+
+export default function Icon({ name, className = "" }: { name: string; className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={`h-[1.25em] w-[1.25em] shrink-0 ${className}`}
+    >
+      <path d={paths[name]} />
+    </svg>
+  );
+}
