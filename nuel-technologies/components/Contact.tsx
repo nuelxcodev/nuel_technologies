@@ -29,7 +29,7 @@ export default function Contact() {
             <input name="name" className={field} placeholder="Your name" aria-label="Your name" required />
             <input name="email" type="email" className={field} placeholder="Your email" aria-label="Your email" required />
             <textarea name="message" rows={3} className={field} placeholder="Tell us about your project" aria-label="Project details" required />
-            <button type="submit" className="btn justify-center">Send message <Icon name="arrow" className="transition group-hover:translate-x-1" /></button>
+            <button type="submit" className="btn group/btn justify-center">Send message <Icon name="arrow" className="transition group-hover/btn:translate-x-1" /></button>
           </form>
         </Reveal>
       </div>

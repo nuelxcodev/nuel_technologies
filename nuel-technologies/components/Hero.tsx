@@ -23,7 +23,7 @@ export default function Hero() {
             Nuel Technologies builds software, manages social media, produces video and runs streaming platforms for ambitious businesses.
           </p>
           <div className="my-8 flex flex-wrap gap-3">
-            <a href="#contact" className="btn">Start a project <Icon name="arrow" className="transition group-hover:translate-x-1" /></a>
+            <a href="#contact" className="btn group/btn">Start a project <Icon name="arrow" className="transition group-hover/btn:translate-x-1" /></a>
             <a href="#projects" className="btn btn-ghost">View our work</a>
           </div>
           <ul className="flex flex-wrap gap-6 text-[.9rem] text-mute">

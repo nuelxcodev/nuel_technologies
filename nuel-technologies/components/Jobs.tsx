@@ -23,8 +23,8 @@ export default function Jobs() {
                 <div className="animate-drop px-[1.4rem] pb-6 text-mute">
                   {j.text}
                   <br />
-                  <a className="btn mt-4" href={`mailto:${site.email}?subject=${encodeURIComponent("Application: " + j.title)}`}>
-                    Apply now <Icon name="arrow" className="transition group-hover:translate-x-1" />
+                  <a className="btn group/btn mt-4" href={`mailto:${site.email}?subject=${encodeURIComponent("Application: " + j.title)}`}>
+                    Apply now <Icon name="arrow" className="transition group-hover/btn:translate-x-1" />
                   </a>
                 </div>
               </details>
