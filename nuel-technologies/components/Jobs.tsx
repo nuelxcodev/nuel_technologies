@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 
 export default async function Jobs() {
   const open = await getOpenJobs();
-  const items = open.map((j) => ({ ...j, postedLabel: new Date(j.posted).toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" }) }));
+  const items = open.map((j) => ({ ...j, postedLabel: j.posted ? new Date(j.posted).toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" }) : "" }));
 
   return (
     <section id="jobs" className="section">

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Collapse from "./Collapse";
 import Icon from "./Icon";
-import type { Job } from "@/lib/jobs";
+import type { Job } from "@/lib/types";
 
 type Item = Job & { postedLabel: string };
 
@@ -36,7 +36,7 @@ export default function JobBoard({ jobs, email }: { jobs: Item[]; email: string 
                   <span className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-[.85rem] text-mute">
                     <span className="inline-flex items-center gap-1.5"><Icon name="briefcase" className="!h-4 !w-4 text-accent" />{j.type}</span>
                     <span className="inline-flex items-center gap-1.5"><Icon name="pin" className="!h-4 !w-4 text-accent" />{j.location}</span>
-                    <span className="inline-flex items-center gap-1.5"><Icon name="clock" className="!h-4 !w-4 text-accent" />Posted {j.postedLabel}</span>
+                    {j.postedLabel && <span className="inline-flex items-center gap-1.5"><Icon name="clock" className="!h-4 !w-4 text-accent" />Posted {j.postedLabel}</span>}
                   </span>
                 </span>
                 <em className="hidden rounded-full bg-accent/12 px-3 py-1 text-xs font-semibold not-italic text-accent sm:block">{j.department}</em>

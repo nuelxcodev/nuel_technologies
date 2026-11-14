@@ -16,6 +16,9 @@ import WhatsApp from "@/components/WhatsApp";
 import { faqs } from "@/lib/content";
 import { site } from "@/lib/site";
 
+// Pages are pre-rendered and refreshed from MongoDB at most once a minute (no redeploy needed after you edit data).
+export const revalidate = 60;
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [

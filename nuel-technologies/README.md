@@ -10,24 +10,39 @@ npm run build && npm start
 
 Optional: set `NEXT_PUBLIC_SITE_URL=https://yourdomain.com` (Vercel > Settings > Environment Variables) so the sitemap, canonical URL and social tags use your real domain.
 
-## Where to edit things
+## Data lives in MongoDB
 
+Open roles, team members and projects are read from MongoDB on the server. Your connection string is never sent to the browser.
+Edit documents in MongoDB Atlas (or Compass) and the site updates within about a minute, no redeploy needed.
+
+1. Copy `.env.example` to `.env.local` and fill in `MONGODB_URI` (and `MONGODB_DB`, default `nuel`).
+2. On Vercel add the same variables under Settings > Environment Variables, then redeploy once.
+3. In Atlas, allow Vercel to connect (Network Access > allow `0.0.0.0/0`, or use the Vercel integration).
+4. Optional: `npm run seed` copies the sample documents from `data/seed.json` into your database (never overwrites existing ones).
+
+Without `MONGODB_URI` the site shows the sample data so it still runs locally. With it set, an empty collection means an empty section.
+
+### Collections and fields
+
+**`jobs`** (shown when `open` is not `false`, newest `posted` first; no open jobs shows an "open application" card)
+`title`, `department`, `type`, `location`, `level`, `summary`, `responsibilities` (array), `requirements` (array), `posted` (Date), `open` (Boolean)
+
+**`team`** (shown when `published` is not `false`, sorted by `order`; section hidden if empty)
+`name`, `role`, `bio`, `photo` (image URL, optional), `order` (Number), `published` (Boolean)
+
+**`projects`** (shown when `published` is not `false`, sorted by `order`; first two are shown, the rest appear with "View more projects")
+`title`, `description`, `category`, `tags` (array), `client`, `industry`, `year`, `duration`, `link` (optional), `image` (URL, optional, otherwise abstract art is used), `order`, `published`, and the client's final review:
+```json
+"review": { "quote": "...", "name": "Jane Doe", "role": "CEO", "company": "Acme", "rating": 5 }
+```
+
+## Other things to edit
 | What | File |
 | --- | --- |
 | Contact details, WhatsApp number, navigation | `lib/site.ts` |
-| **Job postings** (add, edit, close) | `lib/jobs.ts` |
-| Team members and photos | `lib/team.ts` (+ images in `public/team/`) |
-| All written copy: about, services, process, FAQ, benefits, projects, planner options | `lib/content.ts` |
+| Written copy: about, services, process, FAQ, benefits, planner options | `lib/content.ts` |
 | Brand colours (dark and light) | `app/globals.css` (CSS variables at the top) |
 | Fonts, SEO metadata | `app/layout.tsx` |
-
-### Job postings
-Add an object to the `jobs` array in `lib/jobs.ts`. Set `open: false` or delete it to take it down.
-When no job is open, the Careers section automatically shows an "open application" card, and the hero badge switches from "We're hiring" back to "Now taking new projects".
-`getOpenJobs()` is async so you can later swap it for a CMS, database or API call without changing any UI.
-
-### Sample content to replace before launch
-`lib/team.ts` (names and bios), `lib/content.ts` > `projects`, `benefits`, `faqs` pricing and timeline wording, and the job listings in `lib/jobs.ts`.
 
 ## Features
 - Dark and light theme with a smooth cross-fade, remembered per visitor, no flash on load

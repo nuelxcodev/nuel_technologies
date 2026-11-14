@@ -55,13 +55,6 @@ export const benefits = [
   { icon: "heart", title: "People first", text: "A respectful, supportive culture with honest feedback." },
 ];
 
-export const projects = [
-  { title: "Business management portal", text: "Sales, stock, staff and reporting in one secure platform with role-based access for every team member.", tags: ["Web app", "Automation", "Analytics"], art: 0 },
-  { title: "Payments and invoicing", text: "Billing tools that create and send invoices, collect payments and show exactly what is paid and outstanding.", tags: ["Fintech", "API", "Security"], art: 1 },
-  { title: "Customer mobile app", text: "Android and iOS apps for orders, bookings and push notifications, built to feel fast and familiar.", tags: ["Mobile", "Android", "iOS"], art: 2 },
-  { title: "Streaming and media platform", text: "A watch-and-download experience with user accounts, live events and a full admin panel for content.", tags: ["Streaming", "Full stack", "Admin"], art: 3 },
-];
-
 export const faqs = [
   { q: "What does Nuel Technologies do?", a: "We are a software company with a creative studio. We build websites, web apps, mobile apps and custom business systems, and we also provide social media management, professional videography, video streaming services and general tech support." },
   { q: "How much does a project cost?", a: "Every project is scoped individually, because a simple website and a full business platform are very different jobs. After a short discovery conversation we send a clear proposal with a fixed price or milestone-based pricing. The project planner on this page gives us what we need to prepare it." },

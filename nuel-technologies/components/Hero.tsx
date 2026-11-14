@@ -25,6 +25,11 @@ export default async function Hero() {
             </span>
           )}
 
+          <p className="mt-6 flex animate-fadeup items-center gap-3 font-display text-[.82rem] font-semibold uppercase tracking-[.22em] text-accent [animation-delay:.2s] sm:text-[.88rem]">
+            <span aria-hidden className="h-px w-10 bg-accent" />
+            Turning Ideas Into Digital Reality
+          </p>
+
           <h1 className="my-6 text-[clamp(2.9rem,6.6vw,5.4rem)]" aria-label={headline.join(" ")}>
             {headline.map((w, i) => (
               <span key={i} aria-hidden className="word mr-[.25em]">
