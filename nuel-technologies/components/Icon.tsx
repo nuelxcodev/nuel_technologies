@@ -4,6 +4,7 @@ const paths: Record<string, string> = {
   menu: "M4 8h16M4 16h16",
   close: "M6 6l12 12M18 6L6 18",
   plus: "M12 5v14M5 12h14",
+  chevron: "M6 9l6 6 6-6",
   bolt: "M13 3L5 14h6l-1 7 8-11h-6z",
   phone: "M9.5 2.5h5a2 2 0 012 2v15a2 2 0 01-2 2h-5a2 2 0 01-2-2v-15a2 2 0 012-2zM11 18.5h2",
   compass: "M12 3a9 9 0 100 18 9 9 0 000-18zM15.5 8.5l-2 5-5 2 2-5z",
@@ -19,23 +20,23 @@ const paths: Record<string, string> = {
   share: "M6 9.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM18 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM18 15.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6",
   video: "M6 6h7a3 3 0 013 3v6a3 3 0 01-3 3H6a3 3 0 01-3-3V9a3 3 0 013-3zM16 10.5l5-3v9l-5-3z",
   stream: "M12 3a9 9 0 100 18 9 9 0 000-18zM10 8.5l5.5 3.5-5.5 3.5z",
+  sun: "M12 8a4 4 0 100 8 4 4 0 000-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4",
+  moon: "M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z",
+  pin: "M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21zM12 7.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5z",
+  clock: "M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2",
+  briefcase: "M4 8h16a1 1 0 011 1v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9a1 1 0 011-1zM9 8V6a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18",
+  heart: "M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z",
+  book: "M4 5.5A2.5 2.5 0 016.5 3H20v15H6.5A2.5 2.5 0 004 20.5zM4 20.5A2.5 2.5 0 006.5 18H20",
+  code: "M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16",
+  target: "M12 3a9 9 0 100 18 9 9 0 000-18zM12 7a5 5 0 100 10 5 5 0 000-10zM12 11a1 1 0 100 2 1 1 0 000-2z",
+  eye: "M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12zM12 9a3 3 0 100 6 3 3 0 000-6z",
+  chat: "M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-3.5-.8zM9 9.5c.5 2.5 2.5 4.5 5 5l1.2-1.2-1.8-1-.9.7a4 4 0 01-1.8-1.8l.7-.9-1-1.8z",
 };
-
-export type IconName = keyof typeof paths;
 
 export default function Icon({ name, className = "" }: { name: string; className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.8}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={`h-[1.25em] w-[1.25em] shrink-0 ${className}`}
-    >
-      <path d={paths[name]} />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={`h-[1.25em] w-[1.25em] shrink-0 ${className}`}>
+      <path d={paths[name] ?? paths.spark} />
     </svg>
   );
 }

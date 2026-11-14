@@ -1,70 +1,67 @@
 import Icon from "./Icon";
+import GlobeVisual from "./GlobeVisual";
+import { getOpenJobs } from "@/lib/jobs";
 
-const bars = [35, 52, 44, 68, 60, 82, 74, 96];
-const kpis = [
-  { k: "Users", v: "12.4k", d: "+12%" },
-  { k: "Revenue", v: "₦8.2M", d: "+24%" },
-  { k: "Uptime", v: "99.9%", d: "stable" },
-];
+const headline = "We build the software and media your business grows on.".split(" ");
+const accentFrom = 8;
 
-export default function Hero() {
+export default async function Hero() {
+  const open = (await getOpenJobs()).length;
   return (
-    <section id="hero" className="relative pb-24 pt-[170px]">
-      <div className="mx-auto grid w-[min(1160px,92%)] items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
+    <section id="hero" className="relative overflow-hidden pb-24 pt-[160px] lg:pt-[180px]">
+      <div aria-hidden className="grid-bg absolute inset-0" />
+      <div className="wrap relative grid items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
         <div>
-          <span className="glass inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 text-[.85rem] font-medium">
-            <i className="h-2 w-2 animate-blink rounded-full bg-lime shadow-[0_0_10px_#c6ff3d]" />
-            Now taking new projects
-          </span>
-          <h1 className="my-5 text-[clamp(2.8rem,6.4vw,5.2rem)]">
-            Software that helps your business <span className="text-lime">grow faster.</span>
+          {open > 0 ? (
+            <a href="#jobs" className="glass group/pill inline-flex items-center gap-2.5 rounded-full py-1.5 pl-4 pr-3 text-[.85rem] font-medium transition hover:border-accent">
+              <i className="h-2 w-2 animate-blink rounded-full bg-lime shadow-[0_0_10px_rgb(var(--lime))]" />
+              We’re hiring · {open} open {open === 1 ? "role" : "roles"}
+              <Icon name="arrow" className="!h-4 !w-4 transition group-hover/pill:translate-x-1" />
+            </a>
+          ) : (
+            <span className="glass inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 text-[.85rem] font-medium">
+              <i className="h-2 w-2 animate-blink rounded-full bg-lime shadow-[0_0_10px_rgb(var(--lime))]" />
+              Now taking new projects
+            </span>
+          )}
+
+          <h1 className="my-6 text-[clamp(2.9rem,6.6vw,5.4rem)]" aria-label={headline.join(" ")}>
+            {headline.map((w, i) => (
+              <span key={i} aria-hidden className="word mr-[.25em]">
+                <span className={i >= accentFrom ? "text-accent" : ""} style={{ "--i": i } as React.CSSProperties}>{w}</span>
+              </span>
+            ))}
           </h1>
-          <p className="max-w-[30em] text-[1.15rem] text-mute">
-            Nuel Technologies builds software, manages social media, produces video and runs streaming platforms for ambitious businesses.
+
+          <p className="max-w-[31em] animate-fadeup text-[1.15rem] text-mute">
+            Nuel Technologies is a software company with a creative studio inside. We build web and mobile products, then grow them with social media, video and live streaming.
           </p>
-          <div className="my-8 flex flex-wrap gap-3">
+
+          <div className="my-9 flex animate-fadeup flex-wrap gap-3 [animation-delay:1.05s]">
             <a href="#contact" className="btn group/btn">Start a project <Icon name="arrow" className="transition group-hover/btn:translate-x-1" /></a>
             <a href="#projects" className="btn btn-ghost">View our work</a>
           </div>
-          <ul className="flex flex-wrap gap-6 text-[.9rem] text-mute">
-            {["Custom built", "Clear pricing", "Ongoing support"].map((t) => (
-              <li key={t} className="flex items-center gap-2"><Icon name="check" className="!h-[1.1em] !w-[1.1em] text-lime" />{t}</li>
+
+          <ul className="flex animate-fadeup flex-wrap gap-x-7 gap-y-2 text-[.9rem] text-mute [animation-delay:1.2s]">
+            {[["code", "Web and mobile apps"], ["video", "Video and streaming"], ["share", "Social media"]].map(([i, t]) => (
+              <li key={t} className="flex items-center gap-2"><Icon name={i} className="!h-[1.1em] !w-[1.1em] text-accent" />{t}</li>
             ))}
           </ul>
         </div>
 
-        <div className="relative animate-float">
-          <div className="glass overflow-hidden rounded-3xl">
-            <div className="flex items-center gap-1.5 border-b border-white/[.12] px-[1.1rem] py-3.5">
-              <i className="h-2.5 w-2.5 rounded-full bg-lime" /><i className="h-2.5 w-2.5 rounded-full bg-white/20" /><i className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              <span className="ml-auto text-xs text-mute">nuel.app/dashboard</span>
+        <div data-parallax data-speed="0.07" className="relative mx-auto w-full max-w-[580px]">
+          <div className="animate-float">
+            <div aria-hidden className="absolute inset-[-8%] rounded-full bg-lime/20 blur-[90px]" />
+            <GlobeVisual className="relative aspect-square w-full" />
+            <div className="glass absolute -left-2 top-[30%] flex animate-float items-center gap-2 rounded-2xl px-4 py-2.5 text-[.82rem] font-semibold [animation-delay:-2s] sm:-left-6">
+              <Icon name="stream" className="text-accent" />Live streaming
             </div>
-            <div className="grid gap-4 p-5">
-              <div className="grid grid-cols-3 gap-3">
-                {kpis.map((x) => (
-                  <div key={x.k} className="rounded-2xl border border-white/[.12] bg-white/5 px-3.5 py-3 text-xs text-mute">
-                    {x.k}
-                    <b className="block font-display text-[1.3rem] font-semibold tracking-tight text-fg">{x.v}</b>
-                    <em className="text-[.7rem] not-italic text-lime">{x.d}</em>
-                  </div>
-                ))}
-              </div>
-              <div className="flex h-[130px] items-end gap-[7px] rounded-2xl bg-white/[.04] p-2">
-                {bars.map((h, i) => (
-                  <i
-                    key={i}
-                    className="flex-1 origin-bottom animate-grow rounded-t-md rounded-b-sm bg-gradient-to-b from-lime to-lime/10"
-                    style={{ height: `${h}%`, animationDelay: `${400 + i * 70}ms` }}
-                  />
-                ))}
-              </div>
+            <div className="glass absolute -right-2 top-[14%] flex animate-float items-center gap-2 rounded-2xl px-4 py-2.5 text-[.82rem] font-semibold [animation-delay:-4s] sm:-right-4">
+              <Icon name="code" className="text-accent" />Web and mobile
             </div>
-          </div>
-          <div className="glass absolute -left-8 top-[36%] flex animate-float items-center gap-2 rounded-2xl px-4 py-2.5 text-[.82rem] font-semibold [animation-delay:-2s] max-md:left-0">
-            <Icon name="rocket" className="text-lime" />Deployed live
-          </div>
-          <div className="glass absolute -bottom-5 -right-4 flex animate-float items-center gap-2 rounded-2xl px-4 py-2.5 text-[.82rem] font-semibold [animation-delay:-1s] max-md:right-0">
-            <Icon name="trend" className="text-lime" />Growth +38%
+            <div className="glass absolute -bottom-2 right-[8%] flex animate-float items-center gap-2 rounded-2xl px-4 py-2.5 text-[.82rem] font-semibold [animation-delay:-1s]">
+              <Icon name="trend" className="text-accent" />Social growth
+            </div>
           </div>
         </div>
       </div>

@@ -1,36 +1,52 @@
 import Icon from "./Icon";
+import JobBoard from "./JobBoard";
 import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
-import { jobs, site } from "@/lib/data";
+import { benefits } from "@/lib/content";
+import { getOpenJobs } from "@/lib/jobs";
+import { site } from "@/lib/site";
 
-export default function Jobs() {
+export default async function Jobs() {
+  const open = await getOpenJobs();
+  const items = open.map((j) => ({ ...j, postedLabel: new Date(j.posted).toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" }) }));
+
   return (
-    <section id="jobs" className="py-[clamp(4.5rem,9vw,7.5rem)]">
-      <div className="mx-auto w-[min(1160px,92%)]">
-        <SectionHead icon="users" tag="Jobs" title="Build the future with Nuel Technologies." text="Join a growing team that values craft, ownership and learning." />
-        <div className="mx-auto grid max-w-[860px] gap-3">
-          {jobs.map((j) => (
-            <Reveal key={j.title}>
-              <details className="glass group rounded-[18px] transition open:border-lime/55">
-                <summary className="flex cursor-pointer list-none items-center gap-4 px-[1.4rem] py-5 font-display text-[1.12rem] font-semibold [&::-webkit-details-marker]:hidden">
-                  <span className="flex-1">
-                    {j.title}
-                    <small className="block font-sans text-sm font-normal text-mute">{j.stack}</small>
-                  </span>
-                  <em className="rounded-full bg-lime/10 px-3 py-1 font-sans text-xs font-semibold not-italic text-lime">Open</em>
-                  <Icon name="plus" className="text-lime transition group-open:rotate-45" />
-                </summary>
-                <div className="animate-drop px-[1.4rem] pb-6 text-mute">
-                  {j.text}
-                  <br />
-                  <a className="btn group/btn mt-4" href={`mailto:${site.email}?subject=${encodeURIComponent("Application: " + j.title)}`}>
-                    Apply now <Icon name="arrow" className="transition group-hover/btn:translate-x-1" />
-                  </a>
-                </div>
-              </details>
+    <section id="jobs" className="section">
+      <div className="wrap">
+        <SectionHead icon="briefcase" tag="Careers" title="Build the future with Nuel Technologies." text="Join a growing team that values craft, ownership and learning. Every open position appears below, and we update this list as we grow." />
+
+        <div className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {benefits.map((b, i) => (
+            <Reveal key={b.title} delay={(i % 3) * 80} className="h-full">
+              <div data-spot className="spot glass h-full rounded-3xl p-6 transition duration-300 hover:-translate-y-1 hover:border-accent/50">
+                <div className="mb-4 grid h-11 w-11 place-items-center rounded-2xl border border-accent/25 bg-accent/10 text-accent"><Icon name={b.icon} /></div>
+                <h3 className="mb-1.5 text-lg">{b.title}</h3>
+                <p className="text-[.93rem] text-mute">{b.text}</p>
+              </div>
             </Reveal>
           ))}
         </div>
+
+        {items.length > 0 ? (
+          <Reveal>
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+              <h3 className="text-2xl">Open positions</h3>
+              <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium">
+                <i className="h-2 w-2 animate-blink rounded-full bg-lime shadow-[0_0_10px_rgb(var(--lime))]" />
+                {items.length} {items.length === 1 ? "role" : "roles"} open now
+              </span>
+            </div>
+            <JobBoard jobs={items} email={site.email} />
+          </Reveal>
+        ) : (
+          <Reveal v="scale">
+            <div className="glass mx-auto max-w-2xl rounded-[28px] p-8 text-center">
+              <h3 className="mb-2 text-2xl">No open positions right now</h3>
+              <p className="mb-6 text-mute">We are not hiring for a specific role at the moment, but we always like to meet talented people. Send us your CV and portfolio and we will keep it on file.</p>
+              <a className="btn group/btn" href={`mailto:${site.email}?subject=${encodeURIComponent("Open application")}`}>Send an open application <Icon name="arrow" className="transition group-hover/btn:translate-x-1" /></a>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

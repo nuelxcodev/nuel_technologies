@@ -8,20 +8,20 @@ export default function Counter({ n, suffix = "" }: { n: number; suffix?: string
     const el = ref.current;
     if (!el) return;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const io = new IntersectionObserver(([e]) => {
+    const obs = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
-      io.disconnect();
+      obs.disconnect();
       if (reduce) return setV(n);
       const t0 = performance.now();
-      const tick = (t: number) => {
-        const p = Math.min((t - t0) / 1300, 1);
+      const step = (t: number) => {
+        const p = Math.min((t - t0) / 1400, 1);
         setV(Math.round(n * (1 - Math.pow(1 - p, 3))));
-        if (p < 1) requestAnimationFrame(tick);
+        if (p < 1) requestAnimationFrame(step);
       };
-      requestAnimationFrame(tick);
+      requestAnimationFrame(step);
     }, { threshold: 0.6 });
-    io.observe(el);
-    return () => io.disconnect();
+    obs.observe(el);
+    return () => obs.disconnect();
   }, [n]);
-  return <b ref={ref} className="block font-display text-4xl font-semibold tracking-tight text-lime">{v}{suffix}</b>;
+  return <b ref={ref} className="block font-display text-4xl font-semibold tracking-tight text-accent md:text-5xl">{v}{suffix}</b>;
 }
