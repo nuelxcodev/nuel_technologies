@@ -116,3 +116,22 @@
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .word > span { transform: none; }
 }
+
+@layer components {
+  /* Hero tagline: the first thing a visitor sees. Big, uppercase, glowing, with a light sweep that loops. */
+  .caption {
+    max-width: 13em; font-family: var(--font-grotesk), "Trebuchet MS", sans-serif; font-weight: 700; text-transform: uppercase;
+    font-size: clamp(1.7rem, 4.6vw, 3.3rem); line-height: 1.02; letter-spacing: 0.05em;
+    background: linear-gradient(100deg, rgb(var(--accent)) 0%, rgb(var(--accent)) 38%, rgb(var(--fg)) 50%, rgb(var(--accent)) 62%, rgb(var(--accent)) 100%);
+    background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 28px rgb(var(--accent) / 0.45));
+    animation: captionIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both, shine 4.5s linear 1.3s infinite;
+  }
+  .caption-bar {
+    display: block; height: 4px; width: 84px; border-radius: 4px; transform-origin: left; background: rgb(var(--lime));
+    box-shadow: 0 0 18px rgb(var(--lime)); animation: barIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+@keyframes captionIn { from { opacity: 0; letter-spacing: 0.3em; filter: blur(14px) drop-shadow(0 0 28px rgb(var(--accent) / 0.45)); } }
+@keyframes shine { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+@keyframes barIn { from { transform: scaleX(0); } }

@@ -26,7 +26,5 @@ const toProject = (d: Raw): Project => ({
   review: toReview(d.review),
 });
 
-/** Projects from the `projects` collection (documents where `published` is not false), sorted by `order`. */
-export const getProjects = cache(() =>
-  load("projects", { published: { $ne: false } }, { order: 1, _id: -1 }, toProject, (d) => d.published !== false)
-);
+/** Published projects from the API, already sorted by the API. */
+export const getProjects = cache(() => load("projects", toProject, (d) => d.published !== false));

@@ -15,7 +15,5 @@ const toJob = (d: Raw): Job => ({
   posted: iso(d.posted ?? d.createdAt),
 });
 
-/** Open roles from the `jobs` collection (documents where `open` is not false), newest first. Deduped per request. */
-export const getOpenJobs = cache(() =>
-  load("jobs", { open: { $ne: false } }, { posted: -1 }, toJob, (d) => d.open !== false)
-);
+/** Open roles from the API, newest first. Deduped per request. */
+export const getOpenJobs = cache(() => load("jobs", toJob, (d) => d.open !== false));

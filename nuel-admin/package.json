@@ -1,0 +1,23 @@
+{
+  "name": "nuel-admin",
+  "version": "1.0.0",
+  "description": "Nuel Technologies admin dashboard",
+  "author": "Nuel Technologies",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.7.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.nueltechnologies.admin",
+    "productName": "Nuel Admin",
+    "files": ["main.js", "preload.js", "renderer/**"],
+    "win": { "target": "nsis" },
+    "mac": { "target": "dmg" },
+    "linux": { "target": "AppImage" }
+  }
+}

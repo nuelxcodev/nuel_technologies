@@ -1,0 +1,272 @@
+{
+  "jobs": [
+    {
+      "title": "Frontend Developer",
+      "department": "Engineering",
+      "type": "Full-time",
+      "location": "Remote or on-site",
+      "level": "Mid level",
+      "posted": "2026-11-01",
+      "open": true,
+      "summary": "Build fast, accessible interfaces for client products and help shape our internal design system.",
+      "responsibilities": [
+        "Build responsive interfaces with React and Next.js",
+        "Turn design files into polished, accessible components",
+        "Review code and improve performance across projects"
+      ],
+      "requirements": [
+        "2+ years building production web interfaces",
+        "Strong HTML, CSS, JavaScript and TypeScript",
+        "A portfolio or GitHub we can look at"
+      ],
+      "slug": "frontend-developer"
+    },
+    {
+      "title": "Backend Developer",
+      "department": "Engineering",
+      "type": "Full-time",
+      "location": "Remote or on-site",
+      "level": "Mid level",
+      "posted": "2026-11-01",
+      "open": true,
+      "summary": "Design secure APIs and services that power client platforms, from payments to streaming.",
+      "responsibilities": [
+        "Design and build REST or GraphQL APIs",
+        "Model data and write reliable database queries",
+        "Own deployment, monitoring and security basics"
+      ],
+      "requirements": [
+        "Experience with Node.js or Python",
+        "Solid SQL and API design knowledge",
+        "Care for testing, security and clean architecture"
+      ],
+      "slug": "backend-developer"
+    },
+    {
+      "title": "Mobile App Developer",
+      "department": "Engineering",
+      "type": "Contract",
+      "location": "Remote",
+      "level": "Mid level",
+      "posted": "2026-11-05",
+      "open": true,
+      "summary": "Ship Android and iOS apps for our clients, from first screen to store release.",
+      "responsibilities": [
+        "Build cross-platform apps with Flutter or React Native",
+        "Integrate APIs, push notifications and payments",
+        "Prepare and publish releases to the app stores"
+      ],
+      "requirements": [
+        "Shipped at least one mobile app",
+        "Comfortable with state management and REST APIs",
+        "Attention to smooth, native-feeling interaction"
+      ],
+      "slug": "mobile-developer"
+    },
+    {
+      "title": "UI/UX Designer",
+      "department": "Design",
+      "type": "Full-time",
+      "location": "Remote or on-site",
+      "level": "Mid level",
+      "posted": "2026-11-03",
+      "open": true,
+      "summary": "Turn ideas into clear flows and beautiful screens that people enjoy using.",
+      "responsibilities": [
+        "Run discovery and map user journeys",
+        "Design wireframes, prototypes and high-fidelity UI",
+        "Work with developers to ship what you design"
+      ],
+      "requirements": [
+        "Strong Figma skills and a portfolio",
+        "Understanding of usability and accessibility",
+        "Clear communication with clients and teammates"
+      ],
+      "slug": "ui-ux-designer"
+    },
+    {
+      "title": "Videographer and Editor",
+      "department": "Media",
+      "type": "Full-time",
+      "location": "On-site",
+      "level": "Mid level",
+      "posted": "2026-11-06",
+      "open": true,
+      "summary": "Capture and edit video for client brands, events and our own channels.",
+      "responsibilities": [
+        "Shoot commercials, events and product videos",
+        "Edit, colour grade and add motion graphics",
+        "Support multi-camera live streaming setups"
+      ],
+      "requirements": [
+        "Portfolio of shot and edited work",
+        "Experience with Premiere Pro or DaVinci Resolve",
+        "Own camera kit is a plus"
+      ],
+      "slug": "videographer-editor"
+    },
+    {
+      "title": "Social Media Manager",
+      "department": "Marketing",
+      "type": "Full-time",
+      "location": "Remote or on-site",
+      "level": "Mid level",
+      "posted": "2026-11-08",
+      "open": true,
+      "summary": "Plan and run social accounts for our clients and grow their audiences.",
+      "responsibilities": [
+        "Build content calendars and write captions",
+        "Manage communities and respond to messages",
+        "Report on growth and recommend improvements"
+      ],
+      "requirements": [
+        "Proven experience managing brand accounts",
+        "Strong writing and a good eye for visuals",
+        "Comfortable with analytics and scheduling tools"
+      ],
+      "slug": "social-media-manager"
+    }
+  ],
+  "team": [
+    {
+      "name": "Emmanuel Adeyemi",
+      "role": "Founder and CEO",
+      "bio": "Sets the vision, leads client strategy and makes sure every project delivers real business value.",
+      "slug": "emmanuel-adeyemi",
+      "order": 1
+    },
+    {
+      "name": "Tomi Balogun",
+      "role": "Head of Engineering",
+      "bio": "Designs the architecture behind our platforms and keeps code quality, security and delivery on track.",
+      "slug": "tomi-balogun",
+      "order": 2
+    },
+    {
+      "name": "Ada Nwosu",
+      "role": "Lead Product Designer",
+      "bio": "Turns complex requirements into simple, beautiful interfaces that people enjoy using.",
+      "slug": "ada-nwosu",
+      "order": 3
+    },
+    {
+      "name": "Seyi Ogunleye",
+      "role": "Creative Director, Video",
+      "bio": "Leads shoots, edits and live productions, from brand films to multi-camera events.",
+      "slug": "seyi-ogunleye",
+      "order": 4
+    },
+    {
+      "name": "Zainab Bello",
+      "role": "Social Media Lead",
+      "bio": "Builds content strategies and communities that turn followers into customers.",
+      "slug": "zainab-bello",
+      "order": 5
+    },
+    {
+      "name": "Kelechi Obi",
+      "role": "Streaming Engineer",
+      "bio": "Runs the live and on-demand streaming stack so every broadcast stays smooth and reliable.",
+      "slug": "kelechi-obi",
+      "order": 6
+    }
+  ],
+  "projects": [
+    {
+      "title": "Business management portal",
+      "tags": [
+        "Web app",
+        "Automation",
+        "Analytics"
+      ],
+      "art": 0,
+      "slug": "business-management-portal",
+      "description": "Sales, stock, staff and reporting in one secure platform with role-based access for every team member.",
+      "order": 1,
+      "category": "Web app",
+      "client": "Sample Client",
+      "industry": "Retail and distribution",
+      "year": "2026",
+      "duration": "10 weeks",
+      "review": {
+        "quote": "Sample review. Replace this with your client's real feedback once the project is delivered.",
+        "name": "Client Name",
+        "role": "Role",
+        "company": "Company",
+        "rating": 5
+      }
+    },
+    {
+      "title": "Payments and invoicing",
+      "tags": [
+        "Fintech",
+        "API",
+        "Security"
+      ],
+      "art": 1,
+      "slug": "payments-and-invoicing",
+      "description": "Billing tools that create and send invoices, collect payments and show exactly what is paid and outstanding.",
+      "order": 2,
+      "category": "Fintech",
+      "client": "Sample Client",
+      "industry": "Finance",
+      "year": "2026",
+      "duration": "8 weeks",
+      "review": {
+        "quote": "Sample review. Replace this with your client's real feedback once the project is delivered.",
+        "name": "Client Name",
+        "role": "Role",
+        "company": "Company",
+        "rating": 5
+      }
+    },
+    {
+      "title": "Customer mobile app",
+      "tags": [
+        "Mobile",
+        "Android",
+        "iOS"
+      ],
+      "art": 2,
+      "slug": "customer-mobile-app",
+      "description": "Android and iOS apps for orders, bookings and push notifications, built to feel fast and familiar.",
+      "order": 3,
+      "category": "Mobile app",
+      "client": "Sample Client",
+      "industry": "Hospitality",
+      "year": "2026",
+      "duration": "12 weeks",
+      "review": {
+        "quote": "Sample review. Replace this with your client's real feedback once the project is delivered.",
+        "name": "Client Name",
+        "role": "Role",
+        "company": "Company",
+        "rating": 5
+      }
+    },
+    {
+      "title": "Streaming and media platform",
+      "tags": [
+        "Streaming",
+        "Full stack",
+        "Admin"
+      ],
+      "art": 3,
+      "slug": "streaming-and-media-platform",
+      "description": "A watch-and-download experience with user accounts, live events and a full admin panel for content.",
+      "order": 4,
+      "category": "Streaming",
+      "client": "Sample Client",
+      "industry": "Media",
+      "year": "2026",
+      "duration": "14 weeks",
+      "review": {
+        "quote": "Sample review. Replace this with your client's real feedback once the project is delivered.",
+        "name": "Client Name",
+        "role": "Role",
+        "company": "Company",
+        "rating": 5
+      }
+    }
+  ]
+}

@@ -10,31 +10,19 @@ npm run build && npm start
 
 Optional: set `NEXT_PUBLIC_SITE_URL=https://yourdomain.com` (Vercel > Settings > Environment Variables) so the sitemap, canonical URL and social tags use your real domain.
 
-## Data lives in MongoDB
+## Data comes from the Nuel API
 
-Open roles, team members and projects are read from MongoDB on the server. Your connection string is never sent to the browser.
-Edit documents in MongoDB Atlas (or Compass) and the site updates within about a minute, no redeploy needed.
+The website never touches the database. Open roles, team members and projects are fetched server-side from the Nuel API
+(`/api/public/jobs`, `/team`, `/projects`) and refreshed at most once a minute, so edits made in the admin dashboard appear without a redeploy.
 
-1. Copy `.env.example` to `.env.local` and fill in `MONGODB_URI` (and `MONGODB_DB`, default `nuel`).
-2. On Vercel add the same variables under Settings > Environment Variables, then redeploy once.
-3. In Atlas, allow Vercel to connect (Network Access > allow `0.0.0.0/0`, or use the Vercel integration).
-4. Optional: `npm run seed` copies the sample documents from `data/seed.json` into your database (never overwrites existing ones).
+1. Deploy the **nuel-api** project first (see its README) and note its address.
+2. Copy `.env.example` to `.env.local` and set `API_URL` and `API_KEY` (the key must match `WEBSITE_API_KEY` in the API).
+3. On Vercel add the same two variables under Settings > Environment Variables, then redeploy once.
 
-Without `MONGODB_URI` the site shows the sample data so it still runs locally. With it set, an empty collection means an empty section.
+Without `API_URL` the site shows sample content from `data/seed.json`, so it still runs locally.
+With `API_URL` set, an empty list means an empty section. If the API is down when a page refreshes, the last good version keeps being served; a production build fails if the API cannot be reached, so deploy the API first.
 
-### Collections and fields
-
-**`jobs`** (shown when `open` is not `false`, newest `posted` first; no open jobs shows an "open application" card)
-`title`, `department`, `type`, `location`, `level`, `summary`, `responsibilities` (array), `requirements` (array), `posted` (Date), `open` (Boolean)
-
-**`team`** (shown when `published` is not `false`, sorted by `order`; section hidden if empty)
-`name`, `role`, `bio`, `photo` (image URL, optional), `order` (Number), `published` (Boolean)
-
-**`projects`** (shown when `published` is not `false`, sorted by `order`; first two are shown, the rest appear with "View more projects")
-`title`, `description`, `category`, `tags` (array), `client`, `industry`, `year`, `duration`, `link` (optional), `image` (URL, optional, otherwise abstract art is used), `order`, `published`, and the client's final review:
-```json
-"review": { "quote": "...", "name": "Jane Doe", "role": "CEO", "company": "Acme", "rating": 5 }
-```
+Manage content with the **nuel-admin** desktop app. Field reference: jobs (`title`, `department`, `type`, `location`, `level`, `summary`, `responsibilities[]`, `requirements[]`, `open`), team (`name`, `role`, `bio`, `photo`, `order`, `published`), projects (`title`, `description`, `category`, `tags[]`, `client`, `industry`, `year`, `duration`, `link`, `image`, `order`, `published`, `review{quote,name,role,company,rating}`).
 
 ## Other things to edit
 | What | File |
